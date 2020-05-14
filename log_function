@@ -32,8 +32,7 @@ float ln_value(float);
 
 int main()
 {
-    float x=0;
-    float log_val=0,conv_fac=0;
+    float x=0,log_val=0,conv_fac=0;
     cout<<"need to find log of "<<'\n';
     cin>>x;
     log_val = ln_value(x);
@@ -43,14 +42,14 @@ int main()
 }
 
 /*!======================================================
-                  Power function 
- Description : Simple one that computes a^n.
+                  ln function 
+ Description : computes ln(a)
  param 1 = input value.
  return is ln(input)
 =======================================================*/
 float ln_value(float ip)
 {
-    int resol=1000;    /* Have given the resolution in terms of # of fractional parts that are used for computation */
+    int resol=1000;    /* Have given the resolution in terms of # of fractional parts that are used for computation of ln(x) */
     float temp,op,power[resol],acc=0;
     cout<<"here ip is \t"<<ip<<'\n';
     temp = (ip-1)/(ip+1);
@@ -59,7 +58,7 @@ float ln_value(float ip)
     {
         float n;
         n = 2*term+1;
-        power[term]= power_fn(temp,n);
+        power[term]= (power_fn(temp,n)/n;
         power[term] = power[term]/n;
         cout<<temp<<'\t'<<n<<'\t'<<power[term]<<'\n';
         acc = power[term]+acc;
@@ -71,7 +70,7 @@ float ln_value(float ip)
 }
 /*======================================================
                   Power function 
- Description : Simple one that computes a^n.
+ Description : computes a^n.
  param 1 = input value.
  param 2 = value of exponent 'n' 
  return is float output
