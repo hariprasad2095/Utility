@@ -17,7 +17,7 @@ The resolution depends on two factors.
    This can be increased by changing the number of fractions.
    This is controlled by the variable "resol", which by default 
    is given a value of 1000. With this resolution, I am getitng the 
-   log(1000) ~ 2.9979 which is an error of 0.3%. 
+   log(1000) ~ 2.9979 which is an error of 0.1%. 
    
 No in-built math functions are used. This is a C++
 implementation. 
