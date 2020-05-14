@@ -1,0 +1,88 @@
+
+/*!=================================================
+This utility API computes the log of a number "n" given 
+as the input. 
+y = Log(x) is computed using the fact natural logarithm 
+ln(x) can be expanded into taylor series as follows :
+
+Once ln(x) is computed, we can convert it to log by 
+multiplying with log(2.71) = 0.4342.
+
+f(x) = ln(x) = sum_(n=1) to oo [(-1)^(n-1) * ((x-1)^n)/n]
+
+The resolution depends on two factors. 
+
+1. The conversion factor - 0.4342
+2. The number of terms used in computing the natural log.
+   This can be increased by changing the number of fractions.
+   This is controlled by the variable "resol", which by default 
+   is given a value of 1000. With this resolution, I am getitng the 
+   log(1000) ~ 2.9979 which is an error of 0.3%. 
+   
+No in-built math functions are used. This is a C++
+implementation. 
+====================================================!*/
+#include <iostream>
+using namespace std;
+/* to calculate the power for the particular i/p */
+float power_fn(float,int);
+/* Log value calculator */
+float ln_value(float);
+
+
+int main()
+{
+    float x=0;
+    float log_val=0,conv_fac=0;
+    cout<<"need to find log of "<<'\n';
+    cin>>x;
+    log_val = ln_value(x);
+    log_val = log_val*0.4342; // convert from ln to log
+    cout<<"Answer \n"<<log_val;
+    return 0;
+}
+
+/*!======================================================
+                  Power function 
+ Description : Simple one that computes a^n.
+ param 1 = input value.
+ return is ln(input)
+=======================================================*/
+float ln_value(float ip)
+{
+    int resol=1000;    /* Have given the resolution in terms of # of fractional parts that are used for computation */
+    float temp,op,power[resol],acc=0;
+    cout<<"here ip is \t"<<ip<<'\n';
+    temp = (ip-1)/(ip+1);
+    /* power calculator and accumulator */
+    for(int term=0;term<resol;term++)
+    {
+        float n;
+        n = 2*term+1;
+        power[term]= power_fn(temp,n);
+        power[term] = power[term]/n;
+        cout<<temp<<'\t'<<n<<'\t'<<power[term]<<'\n';
+        acc = power[term]+acc;
+    }
+    /* Taylor Series output */
+    op = 2*(acc);
+    cout<<op<<'\n';
+    return op;
+}
+/*======================================================
+                  Power function 
+ Description : Simple one that computes a^n.
+ param 1 = input value.
+ param 2 = value of exponent 'n' 
+ return is float output
+=======================================================*/
+float power_fn(float ip,int n)
+{
+    float op=1;
+    for(int ctr=0;ctr<n;ctr++)
+    {
+        op = op*ip;
+    }
+    cout<<"power for ip \t"<<ip<<'\t'<<n<<'\t'<<op<<'\n';
+    return op;
+}
