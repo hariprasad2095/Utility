@@ -58,7 +58,7 @@ float ln_value(float ip)
     {
         float n;
         n = 2*term+1;
-        power[term]= (power_fn(temp,n)/n;
+        power[term]= (power_fn(temp,n);
         power[term] = power[term]/n;
         cout<<temp<<'\t'<<n<<'\t'<<power[term]<<'\n';
         acc = power[term]+acc;
